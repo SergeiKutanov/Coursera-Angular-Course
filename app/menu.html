@@ -1,6 +1,6 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" ng-app>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="confusionApp">
 <!--
   Modified from the Debian original for Ubuntu
   Last updated: 2014-03-19
@@ -23,49 +23,10 @@
 <body>
 
     <div class="container">
-        <div class="row row-content" ng-init="
-                    dishes=[
-                         {
-                           name:'Uthapizza',
-                           image: 'images/uthapizza.png',
-                           category: 'mains',
-                           label:'Hot',
-                           price:'4.99',
-                           description:'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.',
-                           comment: ''
-                        },
-                        {
-                           name:'Zucchipakoda',
-                           image: 'images/zucchipakoda.png',
-                           category: 'appetizer',
-                           label:'',
-                           price:'1.99',
-                           description:'Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce',
-                           comment: ''
-                        },
-                        {
-                           name:'Vadonut',
-                           image: 'images/vadonut.png',
-                           category: 'appetizer',
-                           label:'New',
-                           price:'1.99',
-                           description:'A quintessential ConFusion experience, is it a vada or is it a donut?',
-                           comment: ''
-                        },
-                        {
-                           name:'ElaiCheese Cake',
-                           image: 'images/elaicheesecake.png',
-                           category: 'dessert',
-                           label:'',
-                           price:'2.99',
-                           description:'A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms',
-                           comment: ''
-                        }
-                     ]
-        ">
+        <div class="row row-content" nc-controller="menuController as menuCtrl">
             <div class="col-xs-12">
                 <ul class="media-list">
-                    <li class="media" ng-repeat="dish in dishes">
+                    <li class="media" ng-repeat="dish in menuCtrl.dishes">
                         <div class="media-left media-middle">
                             <a href="#">
                                 <img class="media-object imt-thumbnail" ng-src="{{ dish.image }}" />
@@ -88,6 +49,55 @@
     <script src="../bower_components/angular/angular.min.js"></script>
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script>
+
+        var app = angular.module('confusionApp', []);
+
+        app.controller('menuController', function(){
+            var dishes=[
+                {
+                    name:'Uthapizza',
+                    image: 'images/uthapizza.png',
+                    category: 'mains',
+                    label:'Hot',
+                    price:'4.99',
+                    description:'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.',
+                    comment: ''
+                },
+                {
+                    name:'Zucchipakoda',
+                    image: 'images/zucchipakoda.png',
+                    category: 'appetizer',
+                    label:'',
+                    price:'1.99',
+                    description:'Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce',
+                    comment: ''
+                },
+                {
+                    name:'Vadonut',
+                    image: 'images/vadonut.png',
+                    category: 'appetizer',
+                    label:'New',
+                    price:'1.99',
+                    description:'A quintessential ConFusion experience, is it a vada or is it a donut?',
+                    comment: ''
+                },
+                {
+                    name:'ElaiCheese Cake',
+                    image: 'images/elaicheesecake.png',
+                    category: 'dessert',
+                    label:'',
+                    price:'2.99',
+                    description:'A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms',
+                    comment: ''
+                }
+            ];
+
+            this.dishes = dishes;
+        });
+
+    </script>
 </body>
 </html>
 
